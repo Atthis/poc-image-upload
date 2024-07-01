@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload d'image</title>
+  <link rel="stylesheet" href="./assets/style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  
+  <main class="app">
+    <header>
+      <h2>Upload d'image</h2>
+      <section class="server-message">
+
+      </section>
+    </header>
+
+    <section class="input-section">
+      <p>Drag & Drop images here or <span class="browse">browse</span></p>
+      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg" class="file" multiple="multiple">
+    </section>
+
+    <form action="" id="queued-form">
+      <header>
+        <h3>Chargé dans le front</h3>
+        <button type="submit">Télécharger</button>
+      </header>
+      <section class="queued-section">
+
+      </section>
+
+    </form>
+ 
+  </main>
+
+</body>
+</html>
