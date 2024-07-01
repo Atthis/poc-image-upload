@@ -18,8 +18,29 @@
     </header>
 
     <section class="input-section">
+      <p>With accept="image/png, image/jpeg, image/jpeg;capture=camera"</p>
+      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg;capture=camera" class="file" >
+      <!-- <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg;capture=camera" class="file" multiple="multiple" > -->
+    </section>
+
+    <section class="input-section">
+      <p>With accept="image/png, image/jpeg, image/jpeg;capture"</p>
+      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg,capture" class="file" >
+    </section>
+
+    <section class="input-section">
       <p>Drag & Drop images here or <span class="browse">browse</span></p>
-      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg;capture=camera" class="file" multiple="multiple" >
+      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg;capture=camera" class="file" >
+    </section>
+
+    <section class="input-section">
+      <p>With accept="image/png, image/jpeg, image/jpeg" and capture="camera"</p>
+      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg" capture="camera" class="file" >
+    </section>
+
+    <section class="input-section">
+      <p>With accept="image/png, image/jpeg, image/jpeg" and capture="environment"</p>
+      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg" capture="environment" class="file" >
     </section>
 
     <form action="" id="queued-form">
