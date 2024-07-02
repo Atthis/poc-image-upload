@@ -62,11 +62,25 @@
       <p>With accept="image/png, image/jpeg, image/jpg" and capture="environment"</p>
       <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpg" capture="environment" class="file" >
     </section>
+    <!-- Sur FF/Android, ainsi que sur navigateurs Chromium, ouvre uniquement l'appareil photo -->
 
     <section class="input-section">
       <p>With accept="image/png, image/jpeg, image/jpg" only</p>
       <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpg" class="file" >
     </section>
+    <!--
+      Sur FF, propose soit le chargement d'un fichier, soit la prise de photo
+      Sur navigateurs Chromium, propose uniquement le chargement d'un fichier.
+    -->
+
+    <section class="input-section">
+      <p>With another file type (than image) in accept attribute only</p>
+      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpg, font/woff2" class="file" >
+    </section>
+    <!--
+      Sur FF, propose soit le chargement d'un fichier, soit la prise de photo
+      Sur navigateurs Chromium, propose uniquement le chargement d'un fichier.
+    -->
 
     <form action="" id="queued-form">
       <header>
