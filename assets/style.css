@@ -1,4 +1,4 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -128,4 +128,4 @@ header h2 {
 .saved-div .span--hidden,
 .queued-section .span--hidden {
   visibility: hidden;
-}
+} */

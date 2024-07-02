@@ -1,5 +1,3 @@
-import loadMime from "./mimeChecker.js";
-
 const queuedForm = document.querySelector('#queued-form');
 const queuedSection = document.querySelector('.queued-section');
 const inputSections = document.querySelectorAll('.input-section');
@@ -9,6 +7,11 @@ const serverMessage = document.querySelector('.server-message');
 const queuedImagesArray = [];
 
 // QUEUED IN FRONT-END IMAGES
+function deleteQueuedImage(id) {
+  queuedImagesArray.splice(id, 1);
+  displayQueuedImages();
+}
+
 function displayQueuedImages() {
   let images = '';
 
@@ -16,17 +19,12 @@ function displayQueuedImages() {
     images += `
       <section class="image">
         <img src="${URL.createObjectURL(image)}" alt="image">
-        <span onclick="deleteQueuedImage(${i})">&times;</span>
+        <!--<span onclick="deleteQueuedImage(${i})">&times;</span>-->
       </section>
     `
   });
 
   queuedSection.innerHTML = images;
-}
-
-function deleteQueuedImage(id) {
-  queuedImagesArray.splice(id, 1);
-  displayQueuedImages();
 }
 
 function sendQueuedImagesToServer() {
@@ -55,8 +53,6 @@ function sendQueuedImagesToServer() {
 
 inputs.forEach(input => {
   input.addEventListener('change', () => {
-  loadMime(input.files[0], infos => console.log(infos))
-
   const files = input.files;
   
   for (let i = 0; i < files.length; i++) {
@@ -65,7 +61,6 @@ inputs.forEach(input => {
     }
   }
   
-
   queuedForm.reset();
   displayQueuedImages();
   })

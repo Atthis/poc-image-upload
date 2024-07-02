@@ -16,47 +16,6 @@
 
       </section>
     </header>
-<!-- 
-    <section class="input-section">
-      <p>Without any attribute</p>
-      <input type="file" name="image-load" id="image-load" class="file" >
-    </section>
-
-    <section class="input-section">
-      <p>With accept="image/*"</p>
-      <input type="file" name="image-load" id="image-load" accept="image/*" class="file" >
-    </section>
-    
-    <section class="input-section">
-      <p>With accept="image/png, image/jpeg, image/jpeg"</p>
-      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg" class="file" >
-    </section>
-
-    <section class="input-section">
-      <p>With accept="image/png, image/jpeg, image/jpeg,capture"</p>
-      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg, capture" class="file" >
-    </section>
-
-    <section class="input-section">
-      <p>With accept="image/png, image/jpeg, image/jpeg,capture=camera"</p>
-      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg,capture=camera" class="file" >
-      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg;capture=camera" class="file" multiple="multiple" >
-    </section>
-
-    <section class="input-section">
-      <p>With accept="image/png, image/jpeg, image/jpeg,capture=environment"</p>
-      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg,capture=environment" class="file" >
-    </section>
-
-    <section class="input-section">
-      <p>With accept="image/png, image/jpeg, image/jpeg" and capture="camera"</p>
-      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg" capture="camera" class="file" >
-    </section>
-
-    <section class="input-section">
-      <p>With accept="image/png, image/jpeg, image/jpeg" and capture="environment"</p>
-      <input type="file" name="image-load" id="image-load" accept="image/png, image/jpeg, image/jpeg" capture="environment" class="file" >
-    </section> -->
 
     <section class="input-section">
       <p>With accept="image/png, image/jpeg, image/jpg" and capture="environment"</p>
@@ -73,22 +32,13 @@
       Sur navigateurs Chromium, propose uniquement le chargement d'un fichier.
     -->
 
-    <section class="input-section">
+    <!-- <section class="input-section">
       <p>With another file type (than image) in accept attribute only</p>
       <p>Formats acceptés : jpeg/jpg, png</p>
       <input type="file" name="image-load" id="image-load" accept="text/plain, image/png, image/jpeg, image/jpg" class="file" >
-    </section>
+    </section> -->
     <!--
-      
-    -->
-
-    <section class="input-section">
-      <p>With another file type (than image) in accept attribute only</p>
-      <p>Formats acceptés : jpeg/jpg, png</p>
-      <input type="file" name="image-load" id="image-load" accept="image/svg+xml, image/png, image/jpeg, image/jpg" class="file" >
-    </section>
-    <!--
-      
+      Astuce forcant Chrome à proposer l'appareil photo ou le chargement d'un fichier ! ne filtre pas les formats de fichier (contrairement à FireFox qui filtre selon les formats acceptés dans l'attribut accept)
     -->
 
     <form action="" id="queued-form">
