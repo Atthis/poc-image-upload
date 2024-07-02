@@ -1,7 +1,7 @@
 const queuedForm = document.querySelector('#queued-form');
 const queuedSection = document.querySelector('.queued-section');
-const inputSection = document.querySelector('.input-section');
-const input = document.querySelector('.input-section input');
+const inputSections = document.querySelectorAll('.input-section');
+const inputs = document.querySelectorAll('.input-section input');
 const serverMessage = document.querySelector('.server-message');
 
 const queuedImagesArray = [];
@@ -51,7 +51,8 @@ function sendQueuedImagesToServer() {
   })
 }
 
-input.addEventListener('change', () => {
+inputs.forEach(input => {
+  input.addEventListener('change', () => {
   const files = input.files;
   
   for (let i = 0; i < files.length; i++) {
@@ -62,9 +63,11 @@ input.addEventListener('change', () => {
   
   queuedForm.reset();
   displayQueuedImages();
+  })
 })
 
-inputSection.addEventListener('drop', e => {
+inputSections.forEach(section => {
+  section.addEventListener('drop', e => {
   e.preventDefault();
   
   const files = e.dataTransfer.files;
@@ -77,6 +80,7 @@ inputSection.addEventListener('drop', e => {
   }
   
   displayQueuedImages();
+  })
 })
 
 queuedForm.addEventListener('submit', e => {
