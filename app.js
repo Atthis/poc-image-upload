@@ -1,3 +1,5 @@
+import loadMime from "./mimeChecker.js";
+
 const queuedForm = document.querySelector('#queued-form');
 const queuedSection = document.querySelector('.queued-section');
 const inputSections = document.querySelectorAll('.input-section');
@@ -53,6 +55,8 @@ function sendQueuedImagesToServer() {
 
 inputs.forEach(input => {
   input.addEventListener('change', () => {
+  loadMime(input.files[0], infos => console.log(infos))
+
   const files = input.files;
   
   for (let i = 0; i < files.length; i++) {
@@ -61,6 +65,7 @@ inputs.forEach(input => {
     }
   }
   
+
   queuedForm.reset();
   displayQueuedImages();
   })
