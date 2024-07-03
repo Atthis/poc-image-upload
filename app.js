@@ -19,12 +19,19 @@ function displayQueuedImages() {
     images += `
       <section class="image">
         <img src="${URL.createObjectURL(image)}" alt="image">
-        <!--<span onclick="deleteQueuedImage(${i})">&times;</span>-->
+        <span class="delete-image">&times;</span>
       </section>
     `
   });
 
   queuedSection.innerHTML = images;
+  addEventListenerToElts('.delete-image', deleteQueuedImage);
+}
+
+function addEventListenerToElts(elt, callback) {
+  const elts = document.querySelectorAll(elt);
+
+  elts.forEach((elt, id) => elt.addEventListener('click', () => callback(id)))
 }
 
 function sendQueuedImagesToServer() {
@@ -51,37 +58,58 @@ function sendQueuedImagesToServer() {
   })
 }
 
+function imageToBase64(image) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader);
+    reader.onerror = (err) => reject(err);
+    reader.readAsDataURL(image);
+  })
+}
+
+// With button mode
 inputs.forEach(input => {
-  input.addEventListener('change', () => {
-  const files = input.files;
-  
-  for (let i = 0; i < files.length; i++) {
-    if (queuedImagesArray.every(image => image.name !== files[i].name)) {
-      queuedImagesArray.push(files[i]);
+  input.addEventListener('change', async () => {
+    const file = input.files[0];
+
+    if (file.size > 1_000_000) {
+      alert('fichier trop volumineux !');
+      input.value = '';
+      return;
     }
-  }
-  
-  queuedForm.reset();
-  displayQueuedImages();
+    
+    if (queuedImagesArray.every(image => image.name !== file.name)) {
+      queuedImagesArray.push(file);
+    }
+    
+    queuedForm.reset();
+    // displayQueuedImages();
+    console.log(file);
+    const base64 = await imageToBase64(file);
+    queuedSection.innerHTML = `
+      <img src="${base64.result}" alt="none" />
+    `;
+    console.log(base64);
   })
 })
 
-inputSections.forEach(section => {
-  section.addEventListener('drop', e => {
-  e.preventDefault();
-  
-  const files = e.dataTransfer.files;
-  
-  for (let i = 0; i < files.length; i++) {
-    if (!files[i].type.match('image')) continue;
-    if (queuedImagesArray.every(image => image.name !== files[i].name)) {
-      queuedImagesArray.push(files[i]);
-    }
-  }
-  
-  displayQueuedImages();
-  })
-})
+// Drag & Drop mode
+// inputSections.forEach(section => {
+//   section.addEventListener('drop', e => {
+//     e.preventDefault();
+    
+//     const files = e.dataTransfer.files;
+    
+//     for (let i = 0; i < files.length; i++) {
+//       if (!files[i].type.match('image')) continue;
+//       if (queuedImagesArray.every(image => image.name !== files[i].name)) {
+//         queuedImagesArray.push(files[i]);
+//       }
+//     }
+    
+//     displayQueuedImages();
+//   })
+// })
 
 queuedForm.addEventListener('submit', e => {
   e.preventDefault();
